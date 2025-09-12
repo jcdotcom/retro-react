@@ -1,0 +1,38 @@
+#root {
+  margin: 0 0; 
+  text-align: center;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-bar {
+  display: flex;
+  flex-direction: row;
+  align-content: 'center';
+  height: 8vh;
+  background-color: #999;
+  color: black;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: grid;
+  height: 92vh;
+  width: 100vw;
+  background-color: #469;
+  color: white;
+}
+
+.desktop-space {
+  grid-area: 1 / 1;
+  align-content: center;
+  align-items: left;
+}
+
+.window-space {
+  grid-area: 1 / 1;
+  display: block;
+}

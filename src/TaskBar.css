@@ -1,0 +1,103 @@
+  .btn-layout {
+    display: flex;
+    flex-shrink: inherit;
+    height: 7vh;
+    margin: 6px;
+  }
+  
+  .btn-start {
+    display: flex;
+    padding: 1px;
+    border-radius: 0;
+    background-color: #888;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    flex-shrink: inherit;
+  }
+  
+  .btn-start:hover {
+    filter: brightness(70%);
+  }
+
+  .btn-task-layout {
+    display: flex;
+    flex-grow: inherit;
+    height: 7vh;
+    margin-top: 6px;
+    gap: 10px;
+  }
+
+  .btn-task {
+    display: grid;
+    place-items: left;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background-color: #888;
+    cursor: pointer;
+    max-width: 32vw;
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  
+  .btn-task:hover {
+    filter: brightness(70%);
+  }
+
+  .btn-task-bg {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: auto;
+  }
+
+  .btn-task-img {
+    grid-area: 1 / 1;
+    height: auto;
+  }
+
+  .btn-text {
+    grid-area: 1 / 1;
+    color: black;
+    font-size: 1.6rem;
+    margin: 10px;
+    text-align: left;
+  }
+
+  .clock-layout {
+    display: flex;
+    flex-grow: 1;
+    height: 7vh;
+    margin-top: 5px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    align-items: center;
+  }
+
+  .clock {
+    display: grid;
+    margin-left: auto; 
+    place-items: center;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background-color: #888;
+    cursor: default;
+    max-width: 20vw;
+    flex-grow: 0;
+    overflow: hidden;
+  }
+
+  .clock-bg {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: auto;
+  }
+
+  .clock-text {
+    grid-area: 1 / 1;
+    color: black;
+    font-size: 1.6rem;
+    margin: 10px;
+  }

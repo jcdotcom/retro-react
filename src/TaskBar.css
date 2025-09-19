@@ -35,7 +35,7 @@
     padding: 0;
     border: none;
     border-radius: 0;
-    background-color: #888;
+    background-color: #aaa;
     cursor: pointer;
     max-width: 32vw;
     flex-grow: 1;
@@ -61,8 +61,11 @@
     grid-area: 1 / 1;
     color: black;
     font-size: 1.6rem;
+    font-family: w95;
     margin: 10px;
+    margin-left: 16px;
     text-align: left;
+    align-content: center;
   }
 
   .clock-layout {
@@ -99,5 +102,6 @@
     grid-area: 1 / 1;
     color: black;
     font-size: 1.6rem;
+    font-family: w95;
     margin: 10px;
   }

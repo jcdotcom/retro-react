@@ -3,6 +3,11 @@
   text-align: center;
 }
 
+@font-face {
+  font-family: w95;
+  src: url('./assets/W95FA.otf');
+}
+
 .layout {
   display: flex;
   flex-direction: column;
@@ -13,7 +18,7 @@
   flex-direction: row;
   align-content: 'center';
   height: 8vh;
-  background-color: #999;
+  background-color: #aaa;
   color: black;
 }
 

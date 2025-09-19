@@ -1,20 +1,20 @@
 import "./TaskBar.css";
 import BtnTask from "./BtnTask";
 
-interface Task {
+interface Task{
   id: number;
   title: string;
 }
 
-interface BtnTasksProps {
+interface BtnTasksProps{
   tasks: Task[];
   onTaskClick: (id: number) => void;
 }
 
-function BtnTasks({ tasks, onTaskClick }: BtnTasksProps) {
+function BtnTasks({ tasks, onTaskClick }: BtnTasksProps){
   return (
     <div className="btn-task-layout">
-      {tasks.map((task) => (
+     {tasks.map((task) => (
         <BtnTask
           key={task.id}
           title={task.title}

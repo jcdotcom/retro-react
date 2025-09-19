@@ -5,7 +5,7 @@ interface BtnTaskProps {
   onClick: () => void;
 }
 
-function BtnTask({ title, onClick }: BtnTaskProps) {
+function BtnTask({ title, onClick }: BtnTaskProps){
   return (
     <button onClick={onClick} className="btn-task">
       <img src={btnTaskBgURL} alt={`${title} img`} className="btn-task-bg" />

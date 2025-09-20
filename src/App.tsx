@@ -2,7 +2,7 @@ import{ useState } from 'react'
 import './App.css'
 import Task from "./Task";
 import BtnStart from "./BtnStart";
-import BtnTasks from "./BtnTasks";
+import BtnTasks from "./Taskbar";
 import ClockArea from "./ClockArea";
 
 interface OpenTask{
@@ -13,6 +13,7 @@ interface OpenTask{
 
 function App(){
   const [tasks, setTasks] = useState([{id: 1, title: "Task 1"}]);
+  const [taskHistory, setTaskHistory] = useState<number[]>([]);
   const [openContainers, setOpenContainers] = useState<OpenTask[]>(() =>
     tasks.length > 0
       ? [
@@ -26,6 +27,14 @@ function App(){
   );
 
   const [activeTaskId, setActiveTaskId] = useState<number>(tasks[0]?.id || 0);
+
+  function setActiveTask(id: number) {
+    setActiveTaskId(id);
+    setTaskHistory((prev) => {
+      const filtered = prev.filter((tid) => tid !== id); // remove if it exists
+      return [...filtered, id]; // push to the end (most recent)
+    });
+  }
 
   function handleTaskClick(id: number){
     const task = tasks.find((t) => t.id === id);
@@ -43,7 +52,16 @@ function App(){
   function handleTaskClose(id: number){
     setTasks((prev) => prev.filter((t) => t.id !== id));
     setOpenContainers((prev) => prev.filter((c) => c.id !== id));
-    if (activeTaskId === id) setActiveTaskId(openContainers[0]?.id || 0);
+    
+    setTaskHistory((prev) => prev.filter((tid) => tid !== id)); // remove closed id
+
+    if (activeTaskId === id) {
+      const lastActive = [...taskHistory]
+      .filter((tid) => tid !== id)
+      .reverse()
+      .find((tid) => openContainers.some((c) => c.id === tid));
+      setActiveTask(lastActive || 0);
+    }
   }
 
   function openNewTask(){
@@ -54,7 +72,7 @@ function App(){
       ...prev,
      { id: newTask.id, title: newTask.title, content: `Content for ${newTask.title}` },
     ]);
-    setActiveTaskId(newId);
+    setActiveTask(newId);
   }
 
   return (
@@ -69,7 +87,7 @@ function App(){
               content={container.content}
               active={container.id === activeTaskId}
               onClose={handleTaskClose}
-              onActivate={() => setActiveTaskId(container.id)} 
+              onActivate={() => setActiveTask(container.id)} 
             />
           ))}
         </div>

@@ -2,7 +2,7 @@ import{ useState, useEffect } from "react";
 import "./TaskBar.css";
 import clockBgURL from './assets/ClockAreaImg.jpg';
 
-export default function BtnStart(){
+export default function ClockArea(){
   const [count, setCount] = useState(0);
 
   useEffect(() =>{

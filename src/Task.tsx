@@ -10,6 +10,7 @@ interface TaskProps{
   onActivate: () => void;
   onClose: (id: number) => void;
 }
+
 function Task({ id, title, content, onClose, active = false, onActivate }: TaskProps){
   const taskRef = useRef<HTMLDivElement>(null);
   const col = (id - 1) % 4;             
@@ -50,7 +51,6 @@ function Task({ id, title, content, onClose, active = false, onActivate }: TaskP
     };
   }, [dragging]);  
 
-
 return (
   <div
   ref={taskRef}
@@ -84,46 +84,3 @@ return (
 )}
 
 export default Task;
-
-/*
-  return (
-    <div
-      ref={taskRef}
-      className="task-container"
-      style={{
-        top: position.top,
-        left: position.left,
-        zIndex: active ? 1000 : 1,
-      }}
-      onMouseDown={(e) => {
-        onActivate();
-  
-        if ((e.target as HTMLElement).closest(".task-header")) {
-          setDragging(true);
-          offset.current = {
-            x: e.clientX - taskRef.current!.offsetLeft,
-            y: e.clientY - taskRef.current!.offsetTop,
-          };
-        }
-      }}
-    >
-      <div
-        className={`task-header ${dragging ? "dragging" : ""} 
-        ${active ? "active" : ""}`}
-      >
-      <div className={`task-header ${dragging ? "dragging" : ""} 
-      ${active ? "active" : ""}`} onMouseDown={handleMouseDown}>
-        <h2 className="task-title">{title}</h2>
-        <button className="task-close" onClick={() => onClose(id)}>
-          X
-        </button>
-      </div>
-      <div className="task-body">
-        <p>{content}</p>
-      </div>
-    </div>
-    </div>
-  );
-    )}
-export default Task;
-*/

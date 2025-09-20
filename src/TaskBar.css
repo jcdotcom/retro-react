@@ -2,7 +2,8 @@
     display: flex;
     flex-shrink: inherit;
     height: 7vh;
-    margin: 6px;
+    /*margin: 6px;*/
+    align-content: center;
   }
   
   .btn-start {
@@ -25,21 +26,23 @@
     display: flex;
     flex-grow: inherit;
     height: 7vh;
-    margin-top: 6px;
+    /*margin-top: 6px;*/
     gap: 10px;
   }
 
   .btn-task {
     display: grid;
     place-items: left;
-    padding: 0;
+    padding: 1px;
+    margin-left: 10px;
     border: none;
     border-radius: 0;
     background-color: #aaa;
     cursor: pointer;
     max-width: 32vw;
     flex-grow: 1;
-    overflow: hidden;
+    flex-shrink: inherit;
+    
   }
   
   .btn-task:hover {
@@ -62,41 +65,58 @@
     color: black;
     font-size: 1.6rem;
     font-family: w95;
-    margin: 10px;
+    /*margin: 10px;*/
     margin-left: 16px;
     text-align: left;
     align-content: center;
+    /* TODO: Fix text being in bottom left instead of center left */
   }
 
   .clock-layout {
     display: flex;
     flex-grow: 1;
-    height: 7vh;
-    margin-top: 5px;
-    margin-right: 6px;
-    margin-bottom: 6px;
+    /*height: 7vh;*/
+    /*margin-top: 6px;*/
+    
+    /*margin-bottom: 6px;*/
     align-items: center;
+
+    margin-left: auto; 
+    margin-right: 20px;
+    max-width: 8vw;
+
+    /* TODO: need to fix clock right margin */
   }
 
   .clock {
     display: grid;
-    margin-left: auto; 
+    height: 100%;
     place-items: center;
     padding: 0;
     border: none;
     border-radius: 0;
     background-color: #888;
     cursor: default;
-    max-width: 20vw;
-    flex-grow: 0;
-    overflow: hidden;
+    flex-grow: 1;
+    flex-shrink: inherit;
   }
-
+/*
   .clock-bg {
     grid-area: 1 / 1;
     width: 100%;
     height: auto;
+    object-fit: cover; 
+    max-height: 100%;
+  }*/
+
+  .clock-bg {
+    grid-area: 1 / 1;
+    height: 100%;       /* match parent height */
+    width: auto;        /* let width adjust automatically */
+    object-fit: cover;  /* crop if needed */
+    overflow: hidden;
   }
+
 
   .clock-text {
     grid-area: 1 / 1;

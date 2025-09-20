@@ -9,7 +9,7 @@ function BtnStart({onClick}: BtnStartProps){
   return(
     <div className="btn-layout">
       <button onClick={onClick} className="btn-start">
-        <img src={btnStartURL} alt="Button Img" />
+        <img src={btnStartURL} alt="Button Img" className="btn-task-bg"/>
       </button>
     </div>
   );

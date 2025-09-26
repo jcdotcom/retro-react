@@ -32,7 +32,8 @@
 
   .btn-task {
     display: grid;
-    place-items: left;
+    align-items: center;
+    justify-items: start;
     padding: 1px;
     margin-left: 10px;
     border: none;
@@ -68,7 +69,6 @@
     /*margin: 10px;*/
     margin-left: 16px;
     text-align: left;
-    align-content: center;
     /* TODO: Fix text being in bottom left instead of center left */
   }
 

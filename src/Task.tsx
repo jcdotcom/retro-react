@@ -1,27 +1,40 @@
 import React from "react";
 import{useRef, useState} from "react";
-import "./Task.css";
+import "./Window.css";
 
 interface TaskProps{
   id: number;
   title: string;
   content: string;
+  x?: number;   // trying to make absolute position windows
+  y?: number;
   active?: boolean;
   onActivate: () => void;
   onClose: (id: number) => void;
 }
 
-function Task({ id, title, content, onClose, active = false, onActivate }: TaskProps){
+function Task({ id, title, content, x = 0, y = 0, onClose, active = false, onActivate }: TaskProps){
   const taskRef = useRef<HTMLDivElement>(null);
   const col = (id - 1) % 4;             
   const row = Math.floor((id - 1) / 4); 
-  const posx = 20 + (30 * id);
-  const posy = 20 + (40 * (col + 1)) + row * 20;
+  let prex;
+  let prey;
+  if(x == 0 || y == 0){
+    prex = 20 + (30 * id);
+    prey = 20 + (40 * (col + 1)) + row * 20;
+  }
+  else{
+    prex = x;
+    prey = y;
+  }
+  const posx = prex;
+  const posy = prey;
   const [position, setPosition] = useState({ 
     top: posy, left: posx 
   });
   const [dragging, setDragging] = useState(false);
   const offset = useRef({ y: 0, x: 0 });
+
   const handleMouseDown = (e: React.MouseEvent) =>{
     if (!taskRef.current) return;
     setDragging(true);
@@ -32,6 +45,7 @@ function Task({ id, title, content, onClose, active = false, onActivate }: TaskP
     };
     e.preventDefault();
   };
+
   const handleMouseMove = (e: MouseEvent) =>{
     if (!dragging) return;
     setPosition({
@@ -39,9 +53,11 @@ function Task({ id, title, content, onClose, active = false, onActivate }: TaskP
       top: e.clientY - offset.current.y,
     });
   };
+
   const handleMouseUp = () =>{
     setDragging(false);
   };
+
   React.useEffect(() =>{
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
@@ -70,17 +86,17 @@ return (
       };
     }
   }}>
-  <div className={`task-header ${dragging ? "dragging" : ""} 
-  ${active ? "active" : ""}`} onMouseDown={handleMouseDown}>
-    <h2 className="task-title">{title}</h2>
-    <button className="task-close" onClick={() => onClose(id)}>
-      X
-    </button>
+    <div className={`task-header ${dragging ? "dragging" : ""} 
+    ${active ? "active" : ""}`} onMouseDown={handleMouseDown}>
+      <h2 className="task-title">{title}</h2>
+      <button className="task-close-btn" onClick={() => onClose(id)}>
+        X
+      </button>
+    </div>
+    <div className="task-body">
+      <p>{content}</p>
+    </div>
   </div>
-  <div className="task-body">
-    <p>{content}</p>
-  </div>
-</div>
 )}
 
 export default Task;

@@ -1,0 +1,66 @@
+  .task-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    border-radius: 0;
+    padding: 4px;
+    background-color: #aaa;
+    height: 60vh;
+    width: 30vw;
+    cursor: default;
+    user-select: none;
+  }
+  
+  .task-header {
+    display: flex;
+    height: 28px;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #000;
+    background-color: #888;
+    cursor: grab;
+  }
+
+  .task-header.active {
+    background-color: #1c1fc7;
+  }
+
+  .task-header.dragging {
+    cursor: grabbing;
+    background-color: #1416a5;
+  }
+
+  .task-title {
+    margin: 10px;
+    color:#ddd;
+    font-family: w95;
+    font-size: 1.2rem;
+  }
+  
+  .task-close-btn {
+    background: #bbb;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0;
+    font-family: w95;
+    width: 24px;
+    height: 26px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    justify-content: center;
+  }
+
+  .task-close-btn:hover {
+    filter: brightness(0.8);
+  }
+  
+  .task-body {
+    padding: 10px;
+    flex-grow: 1;
+    border: 1px solid black;
+    background-color: #ddd;
+    color: black;
+    margin-top: 6px;
+  }

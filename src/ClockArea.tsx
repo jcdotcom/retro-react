@@ -1,5 +1,4 @@
 import{ useState, useEffect } from "react";
-import "./TaskBar.css";
 import clockBgURL from './assets/ClockAreaImg.jpg';
 
 export default function ClockArea(){

@@ -1,4 +1,4 @@
-import "./TaskBar.css";
+
 import btnStartURL from './assets/BtnStartImg.jpg';
 
 interface BtnStartProps{

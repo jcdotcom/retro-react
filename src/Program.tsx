@@ -1,19 +1,19 @@
 import{useRef, useState} from "react";
 import React, { type ReactNode } from "react";
-import "./Window.css";
-import Program from "./Program";
-
+/*
 interface TaskProps{
   id: number;
   title: string;
-  content: typeof Program; 
+  content: ReactNode;
   x?: number;   // trying to make absolute position windows
   y?: number;
   active?: boolean;
   onActivate: () => void;
   onClose: (id: number) => void;
 }
+*/
 
+/*
 function Task({ id, title, content, x = 0, y = 0, onClose, active = false, onActivate }: TaskProps){
   const taskRef = useRef<HTMLDivElement>(null);
   const col = (id - 1) % 4;             
@@ -67,42 +67,24 @@ function Task({ id, title, content, x = 0, y = 0, onClose, active = false, onAct
       window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [dragging]);  
-
-return (
-  <div
-  ref={taskRef}
-  className="task-container"
-  style={{
-    top: position.top,
-    left: position.left,
-    zIndex: active ? 1000 : 1,
-  }}
-  onMouseDown={(e) => {
-    onActivate();
-    if ((e.target as HTMLElement).closest(".task-header")) {
-      setDragging(true);
-      offset.current = {
-        x: e.clientX - taskRef.current!.offsetLeft,
-        y: e.clientY - taskRef.current!.offsetTop,
-      };
-    }
-  }}>
-    <div className={`task-header ${dragging ? "dragging" : ""} 
-    ${active ? "active" : ""}`} onMouseDown={handleMouseDown}>
-      <h2 className="task-title">{title}</h2>
-      <button className="task-close-btn" onClick={() => onClose(id)}>
-        X
-      </button>
-    </div>
-    <Program/>
-  </div>
-)}
-
-export default Task;
-
-
-/*
-
-major bugs in here, trying to make the body of the task windows
-a type "Program" but its not working out well
 */
+
+interface ProgramProps{
+  progid: number;
+}
+
+const Program: React.FC<ProgramProps> = ({ progid }) => {
+  switch(progid){
+    case 1: 
+    console.log(`progid ${progid}`)  
+    return (
+      <div>
+        <img src='assets/ef3.jpg'/>
+        <p>My silly website</p>
+      </div>
+    );
+    case 2: return (<div></div>);
+  }
+}
+
+export default Program;

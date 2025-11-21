@@ -21,11 +21,24 @@
 }
 
 .desktop-space {
-  display: grid;
-  justify-content: center;
+  display: flex;
+  width: 100vw;
+  z-index: 1;
 }
 
 .window-space {
+  z-index: 0;
+}
+
+.app-start-menu {
+  position: absolute;
+  bottom: 75px; left: 0;
+  min-width: 370px;
+  max-width: 50vw;
+  min-height: 540px;
+  max-height: 80vh;
+  align-items:baseline;
+  background-image: url('assets/StartMenuBg.jpg')
 }
 
 .task-bar-wrapper {
@@ -37,6 +50,7 @@
   display: flex;
   position: absolute;
   width: 100vw;
+  min-height: 74px;
   align-items: center;
   bottom: 0;
   margin-top: 8px;

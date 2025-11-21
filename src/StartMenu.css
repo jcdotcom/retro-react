@@ -1,0 +1,54 @@
+  .start-menu-layout {
+    display: grid;
+    background-image: './assets/StartGithub.jpg';
+    height: auto;
+    width: 100%;
+    align-content: baseline;
+  }
+
+  .start-menu-btn-container {
+    grid-area: 1 / 1;
+
+  }
+
+  .start-menu-task-about {
+    position: relative;
+    top: 580%; left: 60px;
+    background-color: #bbb;
+    background-image: url('assets/StartAbout.jpg');
+    min-width: 300px;
+    max-width: max-content;
+    min-height: 64px;
+  }
+
+  .start-menu-task-about:hover {
+    background-image: url('assets/StartAboutHover.jpg');
+  }
+
+  .start-menu-task-github {
+    position: relative;
+    top: 372%; left: 60px;
+    background-color: #bbb;
+    background-image: url('assets/StartGithub.jpg');
+    min-width: 300px;
+    max-width: max-content;
+    min-height: 64px;
+  }
+
+  .start-menu-task-github:hover {
+    background-image: url('assets/StartGitHubHover.jpg');
+  }
+
+  .start-menu-task-linkedin {
+    position: relative;
+    top: 156%; left: 60px;
+    background-color: #888;
+    background-image: url('assets/StartGithub.jpg');
+    min-width: 300px;
+    max-width: max-content;
+    min-height: 64px;
+  }
+
+  .start-menu-task-linkedin:hover {
+    background-image: url('assets/StartGitHubHover.jpg');
+  }

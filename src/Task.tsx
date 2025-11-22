@@ -6,7 +6,7 @@ import Program from "./Program";
 interface TaskProps{
   id: number;
   title: string;
-  content: typeof Program; 
+  content: ReactNode; 
   x?: number;   // trying to make absolute position windows
   y?: number;
   active?: boolean;
@@ -94,15 +94,8 @@ return (
         X
       </button>
     </div>
-    <Program/>
+    {content}
   </div>
 )}
 
 export default Task;
-
-
-/*
-
-major bugs in here, trying to make the body of the task windows
-a type "Program" but its not working out well
-*/

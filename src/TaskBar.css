@@ -4,7 +4,6 @@
     /* display: grid; */
     /* flex-direction: row; */
     /* flex-shrink: inherit; */
-    /* height: 7vh; */
     /*margin: 6px;*/
     /* align-content: center; */
     /* grid-area: 1 / 1; */
@@ -14,6 +13,7 @@
     display: flex;
     padding: 0;
     margin-left: 10px;
+    margin-bottom: 1px;
     border-radius: 0;
     background-color: transparent;
     border: none;
@@ -50,6 +50,7 @@
     /* flex: i; */
     /* flex-direction: row; */
     /* height: 7vh; */
+    min-height: 76px; 
     /*margin-top: 6px;*/
     /* gap: 10px; */
   }

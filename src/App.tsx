@@ -12,7 +12,7 @@ import StartMenu from './StartMenu';
 import Program from './Program';
 
 function App(){
-  const [tasks, setTasks] = useState([{id: 1, title: "About Me", content: Program(1)}]);
+  const [tasks, setTasks] = useState([{id: 1, title: "About Me", content: <Program progid={1} />}]);
   const [taskHistory, setTaskHistory] = useState<number[]>([]);   
   
   const [activeTaskId, setActiveTaskId] = useState<number>(tasks[0]?.id || 0);
@@ -37,15 +37,15 @@ function App(){
     setStartVisible(false);
   }
 
-  const startAction = (key: string) => {
+  const startAction = (key: number) => {
     switch(key){
-      case 'about':
-        openNewTask(1,"about");
+      case 1:
+        openNewTask(1,"About Me");
         break;
-      case 'github':
+      case 2:
       openNewTask(2,"github");
         break;
-      case 'linkedin':
+      case 3:
       openNewTask(3,"linkedin");
         break;
     }
@@ -53,23 +53,14 @@ function App(){
   
   function openNewTask(newid: number, newtitle: string){
     if(!isOverflow){
-      let mydiv = Program(newid);
-      const newTask = { id: newid, title: newtitle, content: Program(newid)};
+      const newTask = { id: newid, title: newtitle, content: <Program progid={newid} />};
       //setTasks((prev) => [...prev, newTask]);
-      tasks.push(newTask);
-      //setOpenContainers((prev) => [...prev, newTask]);
-      setActiveTask(newid);
+      //tasks.push(newTask);
+      if (!(tasks.some((c) => c.id === newid))){
+        setTasks(prev => [...prev, newTask]);
+        setActiveTask(newid);
+      }
     }
-  }
-
-  function makeTaskBody(id: number){
-    switch(id){
-      case 0: return <></>;
-      case 1: return <div><img src='assets/ef3.jpg'/><p>My silly website</p></div>;
-      case 2: return <></>;
-      case 3: return <></>;
-    }
-    return <></>;
   }
   
   function setActiveTask(id: number) {

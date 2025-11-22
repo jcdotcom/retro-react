@@ -1,9 +1,9 @@
 
 
 interface StartMenuProps {
-  onToggle: (id: string) => void;
+  onToggle: (id: number) => void;
   onStartClose: () => void;
-  startTaskButtonKeys: number;
+  startTaskButtonKeys: number[];
 }
 
 const StartMenu: React.FC<StartMenuProps> = ({ 

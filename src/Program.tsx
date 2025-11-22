@@ -1,73 +1,6 @@
 import{useRef, useState} from "react";
 import React, { type ReactNode } from "react";
-/*
-interface TaskProps{
-  id: number;
-  title: string;
-  content: ReactNode;
-  x?: number;   // trying to make absolute position windows
-  y?: number;
-  active?: boolean;
-  onActivate: () => void;
-  onClose: (id: number) => void;
-}
-*/
-
-/*
-function Task({ id, title, content, x = 0, y = 0, onClose, active = false, onActivate }: TaskProps){
-  const taskRef = useRef<HTMLDivElement>(null);
-  const col = (id - 1) % 4;             
-  const row = Math.floor((id - 1) / 4); 
-  let prex;
-  let prey;
-  if(x == 0 || y == 0){
-    prex = 420 + (30 * id);
-    prey = 20 + (40 * (col + 1)) + row * 20;
-  }
-  else{
-    prex = x+400;
-    prey = y;
-  }
-  const posx = prex;
-  const posy = prey;
-  const [position, setPosition] = useState({ 
-    top: posy, left: posx 
-  });
-  const [dragging, setDragging] = useState(false);
-  const offset = useRef({ y: 0, x: 0 });
-
-  const handleMouseDown = (e: React.MouseEvent) =>{
-    if (!taskRef.current) return;
-    setDragging(true);
-    onActivate();
-    offset.current ={
-      x: e.clientX - taskRef.current.offsetLeft,
-      y: e.clientY - taskRef.current.offsetTop,
-    };
-    e.preventDefault();
-  };
-
-  const handleMouseMove = (e: MouseEvent) =>{
-    if (!dragging) return;
-    setPosition({
-      left: e.clientX - offset.current.x,
-      top: e.clientY - offset.current.y,
-    });
-  };
-
-  const handleMouseUp = () =>{
-    setDragging(false);
-  };
-
-  React.useEffect(() =>{
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
-    return () =>{
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, [dragging]);  
-*/
+import pfp from './assets/ef3.jpg';
 
 interface ProgramProps{
   progid: number;
@@ -76,14 +9,19 @@ interface ProgramProps{
 const Program: React.FC<ProgramProps> = ({ progid }) => {
   switch(progid){
     case 1: 
-    console.log(`progid ${progid}`)  
-    return (
-      <div>
-        <img src='assets/ef3.jpg'/>
-        <p>My silly website</p>
-      </div>
-    );
+      console.log(`progid ${progid}`);  
+      return (
+        <div className="task-body">
+          <div className="pfp-div">
+            <img src={pfp} alt="pfp" className="pfp"/>
+          </div>
+          <div className="text-div">
+            <h1>My silly website</h1>
+          </div>
+          </div>
+      );
     case 2: return (<div></div>);
+    default: return (<div>default</div>);
   }
 }
 

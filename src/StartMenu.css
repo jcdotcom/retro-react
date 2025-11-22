@@ -11,7 +11,7 @@
 
   }
 
-  .start-menu-task-about {
+  .start-menu-task-1 {
     position: relative;
     top: 580%; left: 60px;
     background-color: #bbb;
@@ -21,11 +21,11 @@
     min-height: 64px;
   }
 
-  .start-menu-task-about:hover {
+  .start-menu-task-1:hover {
     background-image: url('assets/StartAboutHover.jpg');
   }
 
-  .start-menu-task-github {
+  .start-menu-task-2 {
     position: relative;
     top: 372%; left: 60px;
     background-color: #bbb;
@@ -35,11 +35,11 @@
     min-height: 64px;
   }
 
-  .start-menu-task-github:hover {
+  .start-menu-task-2:hover {
     background-image: url('assets/StartGitHubHover.jpg');
   }
 
-  .start-menu-task-linkedin {
+  .start-menu-task-3 {
     position: relative;
     top: 156%; left: 60px;
     background-color: #888;
@@ -49,6 +49,6 @@
     min-height: 64px;
   }
 
-  .start-menu-task-linkedin:hover {
+  .start-menu-task-3:hover {
     background-image: url('assets/StartGitHubHover.jpg');
   }

@@ -57,3 +57,10 @@
   background-color: #aaa;
   color: black;
 }
+
+.img {
+  position: absolute;
+  bottom: 90px; right: 30px;
+  max-width: 100px;
+  border: 1px solid black;
+}

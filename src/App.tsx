@@ -10,6 +10,7 @@ import ClockArea from "./ClockArea";
 import Taskbar from './Taskbar';
 import StartMenu from './StartMenu';
 import Program from './Program';
+import bug from './assets/bug.gif';
 
 function App(){
   const [tasks, setTasks] = useState([{id: 1, title: "About Me", content: <Program progid={1} />}]);
@@ -71,6 +72,10 @@ function App(){
     });
   }
 
+  function handleBugClick(){
+    alert("dont even think about it")
+  }
+
   function handleTaskClick(id: number){
     const task = tasks.find((t) => t.id === id);
     if (!task) return;
@@ -118,7 +123,7 @@ function App(){
               ]}
             />
           </div>}
-
+          <img src={bug} alt="bug" className="img" onClick={handleBugClick}/>
         </div>
       </main>
       <div className="task-bar-wrapper">

@@ -43,12 +43,12 @@
     position: relative;
     top: 156%; left: 60px;
     background-color: #888;
-    background-image: url('assets/StartGithub.jpg');
+    background-image: url('assets/StartLinkedin.jpg');
     min-width: 300px;
     max-width: max-content;
     min-height: 64px;
   }
 
   .start-menu-task-3:hover {
-    background-image: url('assets/StartGitHubHover.jpg');
+    background-image: url('assets/StartLinkedinHover.jpg');
   }

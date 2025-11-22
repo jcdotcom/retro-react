@@ -43,10 +43,10 @@ function App(){
         openNewTask(1,"About Me");
         break;
       case 2:
-      openNewTask(2,"github");
+      window.open("https://github.com/jcdotcom", "_blank");
         break;
       case 3:
-      openNewTask(3,"linkedin");
+        window.open("https://www.linkedin.com/in/jaycee-waycaster/", "_blank");
         break;
     }
   }

@@ -1,7 +1,5 @@
-import{useRef, useState} from "react";
-import React, { type ReactNode } from "react";
+import React from "react";
 import pfp from './assets/ef3.jpg';
-import bug from './assets/bug.gif';
 
 interface ProgramProps{
   progid: number;

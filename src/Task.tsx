@@ -1,7 +1,6 @@
 import{useRef, useState} from "react";
 import React, { type ReactNode } from "react";
 import "./Window.css";
-import Program from "./Program";
 
 interface TaskProps{
   id: number;

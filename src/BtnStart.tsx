@@ -1,11 +1,10 @@
-
 import btnStartURL from './assets/BtnStartImg.jpg';
 
 interface BtnStartProps{
   onClick: () => void;
 }
 
-function BtnStart({onClick}: BtnStartProps){
+export default function BtnStart({onClick}: BtnStartProps){
   return(
     <div className="btn-layout">
       <button onClick={onClick} className="btn-start">
@@ -14,5 +13,3 @@ function BtnStart({onClick}: BtnStartProps){
     </div>
   );
 }
-
-export default BtnStart;

@@ -13,7 +13,7 @@ interface TaskProps{
   onClose: (id: number) => void;
 }
 
-function Task({ id, title, content, x = 0, y = 0, onClose, active = false, onActivate }: TaskProps){
+export default function Task({ id, title, content, x = 0, y = 0, onClose, active = false, onActivate }: TaskProps){
   const taskRef = useRef<HTMLDivElement>(null);
   const col = (id - 1) % 4;             
   const row = Math.floor((id - 1) / 4); 
@@ -96,5 +96,3 @@ return (
     {content}
   </div>
 )}
-
-export default Task;

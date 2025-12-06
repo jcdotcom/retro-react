@@ -1,27 +1,9 @@
-import React from "react";
-import pfp from './assets/ef3.jpg';
+export default class Program{
+    title: string;
+    content: string[];
 
-interface ProgramProps{
-  progid: number;
+    constructor(title = "null", content = ["o"]){
+        this.title = title;
+        this.content = content;
+    }
 }
-
-const Program: React.FC<ProgramProps> = ({ progid }) => {
-  switch(progid){
-    case 1: 
-      console.log(`progid ${progid}`);  
-      return (
-        <div className="task-body">
-          <div className="pfp-div">
-            <img src={pfp} alt="pfp" className="pfp"/>
-          </div>
-          <div className="text-div">
-            <h1>My silly website</h1>
-          </div>
-          </div>
-      );
-    case 2: return (<div></div>);
-    default: return (<div>default</div>);
-  }
-}
-
-export default Program;

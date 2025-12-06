@@ -5,7 +5,7 @@ interface BtnTaskProps {
   onClick: () => void;
 }
 
-function BtnTask({ title, onClick }: BtnTaskProps){
+export default function BtnTask({ title, onClick }: BtnTaskProps){
   return (
     <div className="btn-task-wrapper">
       <button onClick={onClick} className="btn-task">
@@ -15,5 +15,3 @@ function BtnTask({ title, onClick }: BtnTaskProps){
     </div>
   );
 }
-
-export default BtnTask;

@@ -3,16 +3,16 @@ import './App.css';
 import './StartMenu.css';
 import './TaskBar.css';
 import './Window.css';
-import Task from "./Task";
-import BtnStart from "./BtnStart";
-import ClockArea from "./ClockArea";
+import BtnStart from './BtnStart';
+import ClockArea from './ClockArea';
+import Task from './Task';
 import Taskbar from './Taskbar';
 import StartMenu from './StartMenu';
-import Program from './Program';
+import Window from './Window';
 import bug from './assets/bug.gif';
 
-function App(){
-  const [tasks, setTasks] = useState([{id: 1, title: "About Me", content: <Program progid={1} />}]);
+export default function App(){
+  const [tasks, setTasks] = useState([{id: 1, title: "About Me", content: <Window progid={1} />}]);
   const [taskHistory, setTaskHistory] = useState<number[]>([]);   
   
   const [activeTaskId, setActiveTaskId] = useState<number>(tasks[0]?.id || 0);
@@ -53,7 +53,7 @@ function App(){
   
   function openNewTask(newid: number, newtitle: string){
     if(!isOverflow){
-      const newTask = { id: newid, title: newtitle, content: <Program progid={newid} />};
+      const newTask = { id: newid, title: newtitle, content: <Window progid={newid} />};
       //setTasks((prev) => [...prev, newTask]);
       //tasks.push(newTask);
       if (!(tasks.some((c) => c.id === newid))){
@@ -137,5 +137,3 @@ function App(){
     </div>
   );
 }
-
-export default App;

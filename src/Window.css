@@ -72,17 +72,13 @@
     font-size: 1.2rem;
   }
 
-  .pfp-div {
-
+  .pfp {
+    max-width: 240px;
+    border: 1px solid black;
   }
 
   .text-div {
     flex-grow: 1;
     padding-left: 10px;
     text-align: center;
-  }
-
-  .pfp {
-    max-width: 240px;
-    border: 1px solid black;
   }

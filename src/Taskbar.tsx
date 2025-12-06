@@ -7,10 +7,19 @@ interface Task{
 
 interface TaskbarProps{
   tasks: Task[];
+  overflow?: number;
   onTaskClick: (id: number) => void;
 }
 
 export default function Taskbar({tasks, onTaskClick}: TaskbarProps){
+
+  // const [isOverflow, setOverflow] = useState(overflow);
+  // React.useEffect(() => {
+  //   const handleOverflow = () => {
+  //     setOverflow(overflow);
+  //   }
+  // }, []);
+
   return(
     <div /*ref={ref}*/ className="btn-task-layout">
       {tasks.map((task) => (
@@ -19,6 +28,7 @@ export default function Taskbar({tasks, onTaskClick}: TaskbarProps){
           title={task.title}
           onClick={() => onTaskClick(task.id)}
         />
+        
       ))}
     </div>
   )

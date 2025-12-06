@@ -8,7 +8,7 @@ export default function BtnStart({onClick}: BtnStartProps){
   return(
     <div className="btn-layout">
       <button onClick={onClick} className="btn-start">
-        <img src={btnStartURL} alt="Button Img" className="btn-task-bg"/>
+        <img src={btnStartURL} alt="Button Img" className="btn-start-bg"/>
       </button>
     </div>
   );

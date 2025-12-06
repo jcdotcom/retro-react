@@ -4,7 +4,8 @@
   "version": "0.0.4",
   "type": "module",
   "scripts": {
-    "dev": "npx wrangler dev",
+    "dev": "tsc -b && vite build && vite",
+    "wdev": "tsc -b && vite build && npx wrangler dev",
     "build": "tsc -b && vite build",
     "deploy": "npx wrangler deploy --assets=./dist",
     "lint": "eslint .",

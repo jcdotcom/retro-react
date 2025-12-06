@@ -1,6 +1,5 @@
   .start-menu-layout {
     display: grid;
-    background-image: './assets/StartGithub.jpg';
     height: auto;
     width: 100%;
     align-content: baseline;
@@ -11,9 +10,25 @@
 
   }
 
+  .start-menu-task-0 {
+    position: relative;
+    left: 16%;
+    margin-top:9%;
+    background-color: #888;
+    background-image: url('assets/StartShutdown.webp');
+    min-width: 300px;
+    max-width: max-content;
+    min-height: 64px;
+  }
+
+  .start-menu-task-0:hover {
+    background-image: url('assets/StartShutdownHover.webp');
+  }
+
   .start-menu-task-1 {
     position: relative;
-    top: 580%; left: 60px;
+    left: 16%;
+    margin-top: 02%;
     background-color: #bbb;
     background-image: url('assets/StartAbout.jpg');
     min-width: 300px;
@@ -27,7 +42,8 @@
 
   .start-menu-task-2 {
     position: relative;
-    top: 372%; left: 60px;
+    left: 16%;
+    margin-top: 02%;
     background-color: #bbb;
     background-image: url('assets/StartGithub.jpg');
     min-width: 300px;
@@ -41,7 +57,8 @@
 
   .start-menu-task-3 {
     position: relative;
-    top: 156%; left: 60px;
+    left: 16%;
+    margin-top: 02%;
     background-color: #888;
     background-image: url('assets/StartLinkedin.jpg');
     min-width: 300px;
@@ -51,4 +68,49 @@
 
   .start-menu-task-3:hover {
     background-image: url('assets/StartLinkedinHover.jpg');
+  }
+
+  .start-menu-task-4 {
+    position: relative;
+    left: 16%;
+    margin-top: 02%;
+    background-color: #888;
+    background-image: url('assets/StartMisc2.webp');
+    min-width: 300px;
+    max-width: max-content;
+    min-height: 64px;
+  }
+
+  .start-menu-task-4:hover {
+    background-image: url('assets/StartMisc2Hover.webp');
+  }
+
+  .start-menu-task-5 {
+    position: relative;
+    left: 16%;
+    margin-top: 02%;
+    background-color: #888;
+    background-image: url('assets/StartMisc1.webp');
+    min-width: 300px;
+    max-width: max-content;
+    min-height: 64px;
+  }
+
+  .start-menu-task-5:hover {
+    background-image: url('assets/StartMisc1Hover.webp');
+  }
+
+  .start-menu-task-6 {
+    position: relative;
+    left: 16%;
+    margin-top: 02%;
+    background-color: #888;
+    background-image: url('assets/StartPrograms.webp');
+    min-width: 300px;
+    max-width: max-content;
+    min-height: 64px;
+  }
+
+  .start-menu-task-6:hover {
+    background-image: url('assets/StartProgramsHover.webp');
   }

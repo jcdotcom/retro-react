@@ -2,15 +2,13 @@ import{ useState, useEffect } from "react";
 import clockBgURL from './assets/ClockAreaImg.jpg';
 
 export default function ClockArea(){
-  const [count, setCount] = useState(0);
-
-  useEffect(() =>{
-    const intervalId = setInterval(() =>{
-      setCount((prevCount) => (prevCount === 9 ? 0 : prevCount + 1));
-    }, 50);
-
-    return () => clearInterval(intervalId);
-  }, []);
+  const [time, setTime] = useState(new Date);
+  useEffect(() =>{ 
+    let clock=setTimeout(()=>{
+      setTime(new Date); 
+    }, 1000)
+    return () => clearTimeout(clock)
+  }, [time]);
 
   const startClick = () =>{
     alert('clock clicked!');
@@ -20,7 +18,7 @@ export default function ClockArea(){
     <div className="clock-layout">
       <button onClick={startClick} className="clock">
         <img src={clockBgURL} alt="Clock" className="clock-bg" />
-        <p className="clock-text">{count}{count}:{count}{count} pm</p>
+        <p className="clock-text">{time.toLocaleTimeString().substring(0,10)}</p>
       </button>
     </div>
   );

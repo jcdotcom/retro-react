@@ -1,11 +1,13 @@
 import btnTaskBgURL from "./assets/BtnTaskBg.jpg";
 
 interface BtnTaskProps {
+  key: number;
   title: string;
   onClick: () => void;
 }
 
-export default function BtnTask({ title, onClick }: BtnTaskProps){
+export default function BtnTask({ key, title, onClick }: BtnTaskProps){
+  if(key == 0) return;
   return (
     <div className="btn-task-wrapper">
       <button onClick={onClick} className="btn-task">

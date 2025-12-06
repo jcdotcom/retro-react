@@ -1,4 +1,4 @@
-import{ useEffect, useState } from 'react';
+import{ useState } from 'react';
 import './App.css';
 import './StartMenu.css';
 import './TaskBar.css';
@@ -12,22 +12,20 @@ import Window from './Window';
 import bug from './assets/bug.gif';
 
 export default function App(){
-  const [tasks, setTasks] = useState([{id: 1, title: "About Me", content: <Window progid={1} />}]);
-  const [taskHistory, setTaskHistory] = useState<number[]>([]);   
-  
+  const [tasks, setTasks] = useState([{id: 1, count: 1, title: "About me", content: <Window progid={1} />}]);
+  const [taskHistory, setTaskHistory] = useState<number[]>([]);
   const [activeTaskId, setActiveTaskId] = useState<number>(tasks[0]?.id || 0);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [startIsVisible, setStartVisible] = useState(false);
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const TASKBAR_BTN_WIDTH = 350;
-  const TASK_WIDTH = 399;
-  const isOverflow = (tasks.length + 1) * TASK_WIDTH > windowWidth - TASKBAR_BTN_WIDTH;
-  // console.log("isOverflow ::: ", tasks.length+1," * ",TASK_WIDTH ," ~~ > ~~ ",windowWidth," - ",TASKBAR_BTN_WIDTH," - ", " --------------- ",  tasks.length * TASK_WIDTH, ">",windowWidth - TASKBAR_BTN_WIDTH);
+  
+  //const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  // useEffect(() => {
+  //   const handleResize = () => setWindowWidth(window.innerWidth);
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
+  //const TASKBAR_BTN_WIDTH = 350;
+  //const TASK_WIDTH = 399;
+  //const isOverflow = (tasks.length + 1) * TASK_WIDTH > windowWidth - TASKBAR_BTN_WIDTH;
 
   const startOpen = () =>{
     setStartVisible(!startIsVisible);
@@ -39,35 +37,46 @@ export default function App(){
 
   const startAction = (key: number) => {
     switch(key){
+      case 0:
+        alert("now shutting down the entire internet");
+        break;
       case 1:
         openNewTask(1,"About Me");
         break;
       case 2:
-      window.open("https://github.com/jcdotcom", "_blank");
+        window.open("https://github.com/jcdotcom", "_blank");
         break;
       case 3:
         window.open("https://www.linkedin.com/in/jaycee-waycaster/", "_blank");
+        break;
+      case 4:
+        openNewTask(2,"blank #1");
+        break;
+      case 5:
+        openNewTask(3,"blank #2");
+        break;
+      case 6:
+        openNewTask(4,"Programs > ");
         break;
     }
   }
   
   function openNewTask(newid: number, newtitle: string){
-    if(!isOverflow){
-      const newTask = { id: newid, title: newtitle, content: <Window progid={newid} />};
-      //setTasks((prev) => [...prev, newTask]);
-      //tasks.push(newTask);
+    //if(!isOverflow){
+      const newTask = { id: newid, count: tasks.length, title: newtitle, content: <Window progid={newid} />};
       if (!(tasks.some((c) => c.id === newid))){
         setTasks(prev => [...prev, newTask]);
+        //tasks.push(newTask);
         setActiveTask(newid);
       }
-    }
+    //}
   }
   
   function setActiveTask(id: number) {
     setActiveTaskId(id);
     setTaskHistory((prev) => {
-      const filtered = prev.filter((tid) => tid !== id); // remove if it exists
-      return [...filtered, id]; // push to the end (most recent)
+      const filtered = prev.filter((tid) => tid !== id);
+      return [...filtered, id]; 
     });
   }
 
@@ -78,13 +87,11 @@ export default function App(){
   function handleTaskClick(id: number){
     const task = tasks.find((t) => t.id === id);
     if (!task) return;
-    if (tasks.some((c) => c.id === id)) return;
     setActiveTask(id);
   }
 
   function handleTaskClose(id: number){
     setTasks((prev) => prev.filter((t) => t.id !== id));
-    //setOpenContainers((prev) => prev.filter((c) => c.id !== id));
     setTaskHistory((prev) => prev.filter((tid) => tid !== id));
     if (activeTaskId === id) {
       const lastActive = [...taskHistory]
@@ -98,12 +105,12 @@ export default function App(){
   return (
     <div className="layout">
       <main className="main-content">
+        <p className="watermark">jcworld.org</p>
         <div className="window-space">
          {tasks.map((task) => (
             <Task
-              key={task.id}
               id={task.id}
-              title={task.title}
+              count={tasks.length}
               content={task.content}
               active={task.id === activeTaskId}
               onClose={handleTaskClose}
@@ -112,13 +119,12 @@ export default function App(){
           ))}
         </div>
         <div className="desktop-space">
-          
           {startIsVisible && <div className="app-start-menu">
             <StartMenu 
               onToggle={startAction}
               onStartClose={startClose}
               startTaskButtonKeys={[
-                1,2,3
+                6,5,4,3,2,1,0
               ]}
             />
           </div>}
@@ -127,9 +133,7 @@ export default function App(){
       </main>
       <div className="task-bar-wrapper">
         <div className="task-bar">
-          
           <BtnStart onClick={startOpen} />
-
           <Taskbar tasks={tasks} onTaskClick={handleTaskClick} />
           <ClockArea />
         </div>

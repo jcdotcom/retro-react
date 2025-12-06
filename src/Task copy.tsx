@@ -4,33 +4,43 @@ import "./Window.css";
 
 interface TaskProps{
   id: number;
-  count: number;
-  content: ReactNode;
+  title: string;
+  content: ReactNode; 
+  x?: number;   // trying to make absolute position windows
+  y?: number;
   active?: boolean;
   onActivate: () => void;
   onClose: (id: number) => void;
 }
 
-const Task = ({ id = 0, count = 0, content = "", active = false, onClose, onActivate }: TaskProps) => {
-  if(id==0) return;
+export default function Task({ id, title, content, x = 0, y = 0, onClose, active = false, onActivate }: TaskProps){
   const taskRef = useRef<HTMLDivElement>(null);
-  let prex = (0.24*window.innerWidth)+(20*count);
-  let prey = (40*count);
+  const col = (id - 1) % 4;             
+  const row = Math.floor((id - 1) / 4); 
+  let prex;
+  let prey;
+  if(x == 0 || y == 0){
+    prex = 420 + (30 * id);
+    prey = 20 + (40 * (col + 1)) + row * 20;
+  }
+  else{
+    prex = x+400;
+    prey = y;
+  }
   const posx = prex;
   const posy = prey;
   const [position, setPosition] = useState({ 
     top: posy, left: posx 
   });
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [dragging, setDragging] = useState(false);
   const offset = useRef({ y: 0, x: 0 });
-  
+
   const handleMouseDown = (e: React.MouseEvent) =>{
     if (!taskRef.current) return;
     setDragging(true);
     onActivate();
     offset.current ={
-      x: e.clientX  - taskRef.current.offsetLeft,
+      x: e.clientX - taskRef.current.offsetLeft,
       y: e.clientY - taskRef.current.offsetTop,
     };
     e.preventDefault();
@@ -49,20 +59,13 @@ const Task = ({ id = 0, count = 0, content = "", active = false, onClose, onActi
   };
 
   React.useEffect(() =>{
-    const handleResize = () => { 
-      setWindowWidth(window.innerWidth); 
-      if(position.left>210){ setPosition({top: position.top, left: position.left-((windowWidth-window.innerWidth)*(100/position.left))}); }
-      else { setPosition({top: position.top, left: position.left-((windowWidth-window.innerWidth)*(position.left/300))}); }
-    }
-    window.addEventListener('resize', handleResize);
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
     return () =>{
-      window.removeEventListener('resize', handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [dragging, windowWidth]);  
+  }, [dragging]);  
 
 return (
   <div
@@ -85,6 +88,7 @@ return (
   }}>
     <div className={`task-header ${dragging ? "dragging" : ""} 
     ${active ? "active" : ""}`} onMouseDown={handleMouseDown}>
+      <h2 className="task-title">{title}</h2>
       <button className="task-close-btn" onClick={() => onClose(id)}>
         X
       </button>
@@ -92,5 +96,3 @@ return (
     {content}
   </div>
 )}
-
-export default Task;
